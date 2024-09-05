@@ -6,6 +6,8 @@ import com.thesharegame.userservice.repository.UserRepository;
 import com.thesharegame.userservice.utils.ModelConverter;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
 
@@ -15,9 +17,9 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public UserDto getUserById(long id){
-        UserEnt userEnt = userRepository.getReferenceById(id);
-        return ModelConverter.convertEntToDto(userEnt);
+    public UserDto getUserById(String id){
+        Optional<UserEnt> userEnt = this.userRepository.findById(id);
+        return ModelConverter.convertEntToDto(userEnt.get());
     }
 
     public UserDto saveUser(UserDto userDto){
@@ -26,7 +28,7 @@ public class UserService {
         return ModelConverter.convertEntToDto(savedEnt);
     }
 
-    public void deleteUser(long id){
+    public void deleteUser(String id){
         userRepository.deleteById(id);
     }
 }
