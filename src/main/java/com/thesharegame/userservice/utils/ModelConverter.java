@@ -10,6 +10,8 @@ public class ModelConverter {
                 .id(userEnt.getId())
                 .email(userEnt.getEmail())
                 .password(userEnt.getPassword())
+                .createDate(userEnt.getCreateDate())
+                .modifyDate(userEnt.getModifyDate())
                 .build();
     }
 
@@ -18,6 +20,8 @@ public class ModelConverter {
                 .id(userDto.getId())
                 .email(userDto.getEmail())
                 .password(userDto.getPassword())
+                .createDate(userDto.getCreateDate())
+                .modifyDate(userDto.getModifyDate())
                 .build();
     }
 }
