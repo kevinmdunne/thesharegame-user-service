@@ -28,4 +28,9 @@ public class UserController {
     public void deleteUser(@PathVariable String id){
         userService.deleteUser(id);
     }
+
+    @GetMapping("/addDummyData")
+    public UserDto addDummyData(){
+        return this.userService.addDummyData();
+    }
 }

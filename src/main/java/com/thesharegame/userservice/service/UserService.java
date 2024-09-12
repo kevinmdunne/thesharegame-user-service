@@ -31,4 +31,12 @@ public class UserService {
     public void deleteUser(String id){
         userRepository.deleteById(id);
     }
+
+    public UserDto addDummyData(){
+        UserEnt userEnt = new UserEnt();
+        userEnt.setEmail("dummy@dummy.com");
+        userEnt.setPassword("password1");
+        UserEnt savedEnt = this.userRepository.save(userEnt);
+        return ModelConverter.convertEntToDto(savedEnt);
+    }
 }
